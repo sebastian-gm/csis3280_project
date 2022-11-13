@@ -6,6 +6,6 @@ The application to be developed in this project will allow the users to register
 
 The technology and tools that will be used in this project are PHP, MySQL, and Laravel. Additionally, third parties APIs will be used.
 
-***Developers***
-Pamela Lemus - 300344812
-Sebastian Gonzalez - 300326988
+***Developers:***
+- Pamela Lemus - 300344812
+- Sebastian Gonzalez - 300326988
