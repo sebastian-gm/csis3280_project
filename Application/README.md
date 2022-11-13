@@ -1,4 +1,4 @@
-#**Project Overview**
+# **Project Overview**
 
 The application to be developed in this project will allow the users to register every financial transaction within all their bank accounts in order to create statistics of their expenses, separating their consumption habits by categories, displaying some dashboards to view their payments in a simpler way. 
 
