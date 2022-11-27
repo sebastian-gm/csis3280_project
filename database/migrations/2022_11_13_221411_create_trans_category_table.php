@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('address', function (Blueprint $table) {
-            $table->id('address_id');
-            $table->unsignedBigInteger('address_user_id');
-            $table->foreign('address_user_id')->references('user_id')->on('user');
-            $table->string('street');
-            $table->string('city');
-            $table->string('postal_code');
-            $table->string('country');
+        Schema::create('trans_category', function (Blueprint $table) {
+            $table->unsignedBigInteger('cat_transaction_id');
+            $table->foreign('cat_transaction_id')->references('transaction_id')->on('transaction');
+            $table->unsignedBigInteger('trans_category_id');
+            $table->foreign('trans_category_id')->references('category_id')->on('category');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('address');
+        Schema::dropIfExists('trans_category');
     }
 };
