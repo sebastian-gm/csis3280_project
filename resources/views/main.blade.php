@@ -1,0 +1,5 @@
+@section('title', "Brainy Wallet")
+@include('partials.header')
+@include('partials.menu')
+@include('partials.maincontent')
+@include('partials.footer')
