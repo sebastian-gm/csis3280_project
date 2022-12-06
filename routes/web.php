@@ -17,7 +17,14 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/main','App\Http\Controllers\UserController@display_main')->name('main');
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::get('/dashboard','App\Http\Controllers\DashboardController@index')->name('dashboard');
+
+Route::get('/txdetails', 'App\Http\Controllers\TransactionController@list')->name('txdetails');
+
 
 
 
@@ -27,4 +34,4 @@ Auth::routes();
 
 Route::get('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
-Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+

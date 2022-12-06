@@ -14,15 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
+
             $table->string('last_name')->after('name');
-            $table->date('date_of_birth')->after('last_name');;
-            $table->string('occupation')->after('date_of_birth');;
-            $table->string('phone')->after('occupation');;
-            $table->string('user_type')->after('password');;
-            $table->string('street')->after('user_type');;
-            $table->string('city')->after('street');;
-            $table->string('postal_code')->after('city');;
-            $table->string('country')->after('postal_code');;
+            $table->date('date_of_birth')->after('last_name');
+            $table->string('occupation')->after('date_of_birth');
+            $table->string('phone')->after('occupation');
+            $table->string('user_type')->after('password');
+            $table->string('street')->after('user_type');
+            $table->string('city')->after('street');
+            $table->string('postal_code')->after('city');
+            $table->string('country')->after('postal_code');
            
         });
     }

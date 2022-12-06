@@ -1,19 +1,92 @@
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-    <header class="mb-auto">
-        <div>
-            <h3 class="float-md-start mb-0">@yield('title')</h3>
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">@yield('title')</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-<nav class="nav nav-masthead justify-content-center float-md-end">
-    @guest
-    <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="{{ route('register') }}">Create an account</a>
-    <a class="nav-link fw-bold py-1 px-0" href="{{ route('login') }}">Sign In</a>
-    <a class="nav-link fw-bold py-1 px-0" href="#">About</a>
-    @else
-    <li class="nav-link fw-bold py-1 px-0"><a href="{{ route('logout') }}">Logout</a></li>
-    <a class="nav-link fw-bold py-1 px-0" href="#">About</a>
-    @endguest
-
-</nav>
-</div>
+    <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
+    <div class="navbar-nav">
+        <div class="nav-item text-nowrap">
+            @guest
+            <a class="nav-link px-3" href="{{ route('register') }}">Create an account</a>
+            <a class="nav-link px-3" href="{{ route('login') }}">Sign In</a>
+            <a class="nav-link px-3" href="#">About</a>
+            @else
+            <div>
+                <a class="nav-link px-3" href="{{ route('logout') }}">Logout</a>
+            </div>
+            <div>
+                <a class="nav-link px-3" href="#">About</a>
+                @endguest
+            </div>
+        </div>
+    </div>
+    
 </header>
 
+<div class="container-fluid">
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="position-sticky pt-3 sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ route('dashboard') }}">
+                            <span data-feather="home" class="align-text-bottom"></span>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('txdetails') }}">
+                            <span data-feather="file" class="align-text-bottom"></span>
+                            Transactions
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                            Register Transactions
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="users" class="align-text-bottom"></span>
+                            Register Accounts
+                        </a>
+                    </li>
+                    
+                </ul>
+
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+                    <span>Saved reports</span>
+                    <a class="link-secondary" href="#" aria-label="Add a new report">
+                        <span data-feather="plus-circle" class="align-text-bottom"></span>
+                    </a>
+                </h6>
+                <ul class="nav flex-column mb-2">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="file-text" class="align-text-bottom"></span>
+                            Current month
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="file-text" class="align-text-bottom"></span>
+                            Last quarter
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="file-text" class="align-text-bottom"></span>
+                            Social engagement
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="file-text" class="align-text-bottom"></span>
+                            Year-end sale
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
