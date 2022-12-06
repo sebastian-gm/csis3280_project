@@ -1,3 +1,5 @@
+use `dbBrainyWallet`;
+
 insert into category (category_id, category_name, category_description) values (1, 'Housing', 'Includes rent or mortgage payments property taxes HOA dues and home maintenance costs');
 insert into category (category_id, category_name, category_description) values (2, 'Transportation', 'Includes car payments registration and DMV fees gas maintenance parking tolls ridesharing costs and public transit');
 insert into category (category_id, category_name, category_description) values (3, 'Food', 'Includes grocery shopping dining out and  food delivery');

@@ -1,3 +1,5 @@
+use `dbBrainyWallet`;
+
 insert into transactions (transaction_id, transaction_account_id, transaction_date, transaction_amount, merchant, transaction_type) values (1, 2, '2020-07-28 16:11:20', 775.31, 'Skidoo', 'expense');
 insert into transactions (transaction_id, transaction_account_id, transaction_date, transaction_amount, merchant, transaction_type) values (2, 3, '2021-02-16 09:58:50', 996.36, 'Chatterpoint', 'income');
 insert into transactions (transaction_id, transaction_account_id, transaction_date, transaction_amount, merchant, transaction_type) values (3, 3, '2020-08-19 21:15:33', 80.82, 'Vidoo', 'income');
