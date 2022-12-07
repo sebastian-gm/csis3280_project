@@ -22,26 +22,33 @@ class DashboardController extends Controller
 
         $viewData['user_dashboard'] = User::all();
         $viewData['categories'] = Category::all();
+        $viewData['transactions'] = "";
+        // $viewData['category'] = "";
 
-        $transactions = DB::table('users')
-        ->join('accounts as acc','acc.account_user_id','=','users.id')
-        ->join('transactions as txs','txs.transaction_account_id', '=', 'acc.account_id')
-        ->join('trans_category as tc', 'tc.cat_transaction_id' ,'=', 'txs.transaction_id')
-        ->join('category as cat','cat.category_id','=','tc.trans_category_id')
-        ->select('txs.transaction_date','txs.transaction_amount',
-        'txs.transaction_type', 'cat.category_name')
-        ->where('users.id', '=', Auth::id())
-        ->where('cat.category_id', '=', $request->category_id)
-        ->where('txs.transaction_type', '=', $request->transaction_type);
+        if($request->category_id)
+        {
 
-        $viewData['category'] = Category::findOrFail($request->category_id);
-
-        $viewData['transactions'] = $transactions->get();
-
-        $viewData['sum_transaction'] = $transactions->sum('txs.transaction_amount');
+            $transactions = DB::table('users')
+            ->join('accounts as acc','acc.account_user_id','=','users.id')
+            ->join('transactions as txs','txs.transaction_account_id', '=', 'acc.account_id')
+            ->join('trans_category as tc', 'tc.cat_transaction_id' ,'=', 'txs.transaction_id')
+            ->join('category as cat','cat.category_id','=','tc.trans_category_id')
+            ->select('txs.transaction_date','txs.transaction_amount',
+            'txs.transaction_type', 'cat.category_name')
+            ->where('users.id', '=', Auth::id())
+            ->where('cat.category_id', '=', $request->category_id)
+            ->where('txs.transaction_type', '=', $request->transaction_type);
+    
+            $viewData['category'] = Category::findOrFail($request->category_id);
+    
+            $viewData['transactions'] = $transactions->get();
+    
+            $viewData['sum_transaction'] = $transactions->sum('txs.transaction_amount');
+        }
         $viewData['sum_expenses_cat'] = $this->sumExpenseByCategory();
         $viewData['total_expenses'] = $this->totalExpense();
         $viewData['total_income'] = $this->totalIncome();
+
         
         // $this->sumExpenseByCategory();
         // $this->totalExpense();
@@ -101,12 +108,12 @@ class DashboardController extends Controller
         ->where('txs.transaction_type', '=', 'income')
         ->get();
         // ->sum('txs.transaction_amount')
-        // dd($expenses);
+     
 
-        // dd($expenses);
+        // dd($income);
         
         return $income->first();
-        // dd($expenses);
+       
 
     }
 

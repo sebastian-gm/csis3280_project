@@ -82,7 +82,8 @@
 
         </div>
     </div>
-
+    <!-- validate -->
+    @if($viewData["transactions"])
     <table class="table table-striped">
         <tr>
             <thead>
@@ -102,7 +103,6 @@
         </tr>
         @endforeach
     </table>
-
     <table class="table table-striped">
         <tr>
             <thead>
@@ -117,6 +117,7 @@
 
         </tr>
     </table>
+    @endif
 
     <div class="row">
         <div class="col-lg-6 mb-4">
