@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,16 +18,27 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/home', function () {
-    return view('home');
-});
-
-Route::get('/dashboard','App\Http\Controllers\DashboardController@index')->name('dashboard');
-
-Route::get('/txdetails', 'App\Http\Controllers\TransactionController@list')->name('txdetails');
 
 
+Route::get('/dashboard','App\Http\Controllers\DashboardController@list')->name('dashboard');
 
+Route::get('/transactions', 'App\Http\Controllers\TransactionController@list')->name('transactions');
+
+Route::get('/transaction/add', 'App\Http\Controllers\TransactionController@add')->name('add_transaction');
+
+Route::post('/transaction/create', 'App\Http\Controllers\TransactionController@create')->name('transaction.create');
+
+Route::get('/account/add', 'App\Http\Controllers\AccountController@add')->name('add_account');
+
+Route::post('/account/create', 'App\Http\Controllers\AccountController@create')->name('account.create');
+
+Route::get('/transaction/{id}/delete','App\Http\Controllers\TransactionController@delete')->name('transaction.delete');
+
+Route::get('/transaction/{id}/edit',[TransactionController::class,'edit'])->name('transaction.edit');
+
+Route::post('/transaction/{id}/update',[TransactionController::class,'update'])->name('transaction.update');
+
+Route::get('/transactions/pdf', [TransactionController::class, 'createPDF']);
 
 Auth::routes();
 

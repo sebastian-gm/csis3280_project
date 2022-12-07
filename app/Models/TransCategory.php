@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Account extends Model
+class TransCategory extends Model
 {
-    protected $table = 'accounts';
-    protected $primaryKey = 'account_id';
+    protected $table = 'trans_category';
+    protected $primaryKey = 'cat_transaction_id';
     use HasFactory;
 }

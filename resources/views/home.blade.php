@@ -166,5 +166,5 @@
 </html>
 
 @else
-@include('partials.dashboardcontent')
+<!-- @include('dashboard') -->
 @endguest
