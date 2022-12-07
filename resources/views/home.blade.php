@@ -166,5 +166,5 @@
 </html>
 
 @else
-@include('partials.dashboardcontent')
+@include('home')
 @endguest
