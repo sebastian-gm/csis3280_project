@@ -166,5 +166,5 @@
 </html>
 
 @else
-<!-- @include('dashboard') -->
+@include('home')
 @endguest
