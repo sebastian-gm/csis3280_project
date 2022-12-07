@@ -3194,17 +3194,6 @@
             "time": "2022-11-05T23:03:38+00:00"
         },
         {
-<<<<<<< HEAD
-            "name": "symfony/console",
-            "version": "v6.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/console.git",
-                "reference": "58f6cef5dc5f641b7bbdbf8b32b44cc926c35f3f"
-            },
-            "dist": {
-                "type": "zip",
-=======
             "name": "sabberworm/php-css-parser",
             "version": "8.4.0",
             "source": {
@@ -3267,7 +3256,6 @@
             },
             "dist": {
                 "type": "zip",
->>>>>>> crud_operations
                 "url": "https://api.github.com/repos/symfony/console/zipball/58f6cef5dc5f641b7bbdbf8b32b44cc926c35f3f",
                 "reference": "58f6cef5dc5f641b7bbdbf8b32b44cc926c35f3f",
                 "shasum": ""
