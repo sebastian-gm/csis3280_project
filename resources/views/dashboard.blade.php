@@ -38,13 +38,13 @@
             </div>
         </div>
 
-        <!-- Earnings (Monthly) Card Example -->
+
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                 Total expenses</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">${{number_format($viewData['total_expenses']->total_amount)}}</div>
                         </div>
@@ -55,10 +55,69 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                    Currently balance</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{number_format($viewData['total_income']->total_amount - $viewData['total_expenses']->total_amount)}}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Canadian Dollar / To</div>
+                                <form action="{{route('dashboard')}}">
+                                    <select name="currency_to_convert" class="form-select" aria-label="Default select example">
+                                        <option selected>Select a currency</option>
+                                        @foreach($viewData["currency_convert"]["cad"] as $key => $currency)
+                                        <option value="{{$currency}}">{{strtoupper($key)}}</option>
+                                        @endforeach
+                                    </select>
+                                    <input type="submit" class="btn btn-primary" value="Convert Currency">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                    Current balance convertion</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{number_format($viewData['currency_to_convert'] * ($viewData['total_income']->total_amount - $viewData['total_expenses']->total_amount))}}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     </div>
 
     <div class="row">
-        <h4>Show data by category and transaction</h4>
+        <h4>Filter data by category and transaction</h4>
         <div class="col">
             <form action="{{route('dashboard')}}">
                 <div class="col">
@@ -77,13 +136,16 @@
                     </select>
                 </div>
 
-                <input type="submit" class="btn btn-primary" value="Search Category">
+                <input type="submit" class="btn btn-primary" value="Show Result">
             </form>
 
         </div>
     </div>
     <!-- validate -->
+
+    
     @if($viewData["transactions"])
+    <h4>Transactions history by category</h4>
     <table class="table table-striped">
         <tr>
             <thead>
@@ -103,6 +165,8 @@
         </tr>
         @endforeach
     </table>
+
+    <h4>Total amount of transactions by category</h4>
     <table class="table table-striped">
         <tr>
             <thead>
@@ -120,9 +184,10 @@
     @endif
 
     <div class="row">
+        <h4>Budget expenses by category </h4>
         <div class="col-lg-6 mb-4">
 
-            <!-- Project Card Example -->
+
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Expenses by category</h6>

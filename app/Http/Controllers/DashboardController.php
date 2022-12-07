@@ -7,19 +7,27 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Transaction;
+use Illuminate\Support\Facades\Http;
 use Auth;
 
 class DashboardController extends Controller
 {
     public function index()
     {
+        
+
         return view('dashboard');
+
     }
 
     public function list(Request $request){
         $viewData = array();
+        $cad = Http::get('https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/cad.json');
         $viewData['title'] = "Dashboard";
-
+        $viewData['currency_convert'] = $cad;
+        $viewData['currency_to_convert'] = ($request->currency_to_convert);
+        // $viewData['currency_convert'] = $cad["cad"];
+        // dd($viewData['currency_convert']);
         $viewData['user_dashboard'] = User::all();
         $viewData['categories'] = Category::all();
         $viewData['transactions'] = "";
