@@ -21,7 +21,7 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/dashboard','App\Http\Controllers\DashboardController@index')->name('dashboard');
+// Route::get('/dashboard','App\Http\Controllers\DashboardController@index')->name('dashboard');
 
 Route::get('/txdetails', 'App\Http\Controllers\TransactionController@list')->name('txdetails');
 
@@ -34,4 +34,7 @@ Auth::routes();
 
 Route::get('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
+
+//Dashboard
+Route::get('/dashboard', 'App\Http\Controllers\DashboardController@list')->name('dashboard');
 
