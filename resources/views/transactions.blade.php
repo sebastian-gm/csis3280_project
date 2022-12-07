@@ -34,18 +34,28 @@
           <td> {{ $tx->transaction_type }} </td>
           <td> {{ $tx->category_name }} </td>
 
+          <td><a href=" {{ route('transaction.edit', $tx->transaction_id) }}">Update</a></td>
+          <td><a href=" {{ route('transaction.delete', $tx->transaction_id) }}">Delete</a></td>
         </tr>
-        @endforeach
 
+        @endforeach
 
 
         @endif
       </tbody>
     </table>
   </div>
+
+  <a class="btn btn-primary" href="{{ URL::to('/transactions/pdf') }}">Export to PDF</a>
   </div>
 </main>
 </div>
 </div>
+
+
+
+
 @endguest
+
+
 @include('partials.footer')

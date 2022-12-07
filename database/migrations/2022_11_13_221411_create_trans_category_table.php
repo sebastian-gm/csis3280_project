@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('trans_category', function (Blueprint $table) {
             $table->unsignedBigInteger('cat_transaction_id');
-            $table->foreign('cat_transaction_id')->references('transaction_id')->on('transactions');
+            $table->foreign('cat_transaction_id')->references('transaction_id')->on('transactions')->onDelete('cascade');
             $table->unsignedBigInteger('trans_category_id');
             $table->foreign('trans_category_id')->references('category_id')->on('category');
             $table->timestamps();

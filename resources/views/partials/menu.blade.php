@@ -36,19 +36,19 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('txdetails') }}">
+                        <a class="nav-link" href="{{ route('transactions') }}">
                             <span data-feather="file" class="align-text-bottom"></span>
                             Transactions
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('add_transaction') }}">
                             <span data-feather="shopping-cart" class="align-text-bottom"></span>
                             Register Transactions
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('add_account') }}">
                             <span data-feather="users" class="align-text-bottom"></span>
                             Register Accounts
                         </a>

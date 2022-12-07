@@ -82,8 +82,8 @@
 
         </div>
     </div>
-    <!-- validate -->
-    @if($viewData["transactions"])
+
+    @if ($viewData["transactions"])
     <table class="table table-striped">
         <tr>
             <thead>
