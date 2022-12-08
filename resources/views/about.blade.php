@@ -132,20 +132,41 @@
             <h3 class="float-md-start mb-0">@yield('title')</h3>
 
             <nav class="nav nav-masthead justify-content-center float-md-end">
-                <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="{{ route('register') }}">Create an account</a>
+                <a class="nav-link fw-bold py-1 px-0" aria-current="page" href="{{ route('register') }}">Create an account</a>
                 <a class="nav-link fw-bold py-1 px-0" href="{{ route('login') }}">Sign In</a>
-                <a class="nav-link fw-bold py-1 px-0" href="\about">About</a>
+                <a class="nav-link fw-bold py-1 px-0 active" href="\about">About</a>
                 
             </nav>
         </div>
     </header>
 
     <main class="px-3">
-        <h1>Brainy Wallet, the new era of expense management</h1>
-        <p class="lead">Brainy Wallet’s  features work together to bring all your purchasing, expenses & income management needs to one accessible hub. Say goodbye to maintaining multiple spreadsheets, paper forms, and slow approvals.</p>
-        <p class="lead">
-            <a href="/register" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Register now</a>
+        <h2>Brainy Wallet, the new era of expense management</h1>
+        <p class="lead">This is a project developed by Pamela Lemus and Sebastian Gonzalez where we apply all the concepts seen throughout the web scripting course for the fall semester of 2022. 
+        Therefore, we incorporate models, views and controllers. In addition, we added CRUD functions for both the user and the administrator.
         </p>
+
+        <div class="row">
+            <div class="col">
+                <h3>Third-Party Integration</h3>
+                <p class="lead">This project used an external currency exchange API. Although Laravel itself has the tool to perform this task, it was decided to use an external one to learn how to do it in different ways.
+                The URL where all the data was obtained can be found at the following link:
+                </p>
+                <a href="https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/cad.json">Currency-api</a>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h3>GitHub</h3>
+                <img src="https://miro.medium.com/max/720/0*LqBi2dONH28oTKVX.webp" alt="GitHub logo">
+                <p class="lead">This project was developed through the GitHub platform. Both team members contributed equally by working on their respective branches and then merging into the main branch.
+                We can find the repository of this project at the following link:
+                </p>
+                <a href="https://github.com/sebastian-gm/csis3280_project">CSIS-3280 Brainy Wallet Project</a>
+                
+            </div>
+        </div>
     </main>
 
 
@@ -163,3 +184,4 @@
 @else
 @include('home')
 @endguest
+
