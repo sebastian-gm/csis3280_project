@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id('transaction_id');
             $table->unsignedBigInteger('transaction_account_id');    
-            $table->foreign('transaction_account_id')->references('account_id')->on('accounts');
+            $table->foreign('transaction_account_id')->references('account_id')->on('accounts')->onDelete('cascade');
             $table->date('transaction_date');
             $table->float('transaction_amount');
             $table->string('merchant');

@@ -38,7 +38,9 @@ Route::get('/transaction/{id}/edit',[TransactionController::class,'edit'])->name
 
 Route::post('/transaction/{id}/update',[TransactionController::class,'update'])->name('transaction.update');
 
-Route::get('/transactions/pdf', [TransactionController::class, 'createPDF']);
+Route::get('/admin', 'App\Http\Controllers\UserController@type')->name('admin');
+
+Route::get('/admin/{id}/delete','App\Http\Controllers\UserController@delete')->name('user.delete');
 
 Auth::routes();
 

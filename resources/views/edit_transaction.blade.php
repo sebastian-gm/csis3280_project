@@ -31,7 +31,7 @@
         <div class="mb-3">
             <label for="transaction_type" class="form-label">Transaction type</label>
             <select name="transaction_type" class="form-select" id="transaction_type">
-                <option selected>Make a selection</option>
+                <option selected>{{ $editData['transaction']->transaction_type }}</option>
                 <option value="expense">expense</option>
                 <option value="income">income</option>
             </select>
@@ -42,7 +42,10 @@
         <div class="mb-3">
             <label for="category_id" class="form-label">Category type</label>
             <select name="category_id" class="form-select">
-                <option selected>Make a selection</option>
+         
+            @foreach($editData["cat_name"] as $cat)
+                <option value="{{ $cat->category_id}}" selected>{{ $cat->category_name }}</option>
+                @endforeach
                 @foreach($editData["categories"] as $category)
                 <option value="{{$category->category_id}}">{{$category->category_name}}</option>
                 @endforeach

@@ -13,7 +13,7 @@
             <select name="account_id" class="form-select">
                 <option selected>Select the account where you want to add the transaction</option>
                 @foreach($addData["accounts"] as $acc)
-                <option value="{{$acc->account_id}}">{{$acc->bank}}, {{ $acc->account_type}}</option>
+                <option value="{{$acc->account_id}}">Account ID: {{$acc->account_id}}, Bank: {{$acc->bank}}, Type: {{ $acc->account_type}}</option>
                 @endforeach
             </select>
         </div>

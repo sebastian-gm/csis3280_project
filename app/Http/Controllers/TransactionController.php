@@ -40,7 +40,8 @@ class TransactionController extends Controller
                 'txs.transaction_amount',
                 'txs.merchant',
                 'txs.transaction_type',
-                'cat.category_name'
+                'cat.category_name',
+                'acc.account_id'
             )
             ->where('users.id', '=', Auth::id())->get();
 
@@ -97,79 +98,51 @@ class TransactionController extends Controller
     {
         Transaction::destroy($transaction_id);
         TransCategory::destroy($transaction_id);
-        
+
         return back();
     }
 
-    public function edit($transaction_id) {
-
-        
+    public function edit($transaction_id)
+    {
         $transaction = Transaction::findorFail($transaction_id);
-
         $editData = array();
         $editData["title"]  = 'Update the following transaction: ';
         $editData["transaction"] = $transaction;
         $editData['categories'] = Category::all();
-
+        $cat = DB::table('users')
+            ->join('accounts as acc', 'acc.account_user_id', '=', 'users.id')
+            ->join('transactions as txs', 'txs.transaction_account_id', '=', 'acc.account_id')
+            ->join('trans_category as tc', 'tc.cat_transaction_id', '=', 'txs.transaction_id')
+            ->join('category as cat', 'cat.category_id', '=', 'tc.trans_category_id')
+            ->select(
+                'cat.category_name',
+                'cat.category_id'
+            )
+            ->where('tc.cat_transaction_id', '=', $transaction_id)->get();
+        $editData["cat_name"] = $cat;
         return view('edit_transaction')
-        ->with('editData',$editData);
-
-      
+            ->with('editData', $editData);
     }
 
 
-    public function  update(Request $formData, $id) {
+    public function  update(Request $formData, $id)
+    {
         $utx =  Transaction::findorFail($id);
         $utx->transaction_date = $formData->input('transaction_date');
         $utx->transaction_amount = $formData->input('transaction_amount');
         $utx->merchant = $formData->input('merchant');
         $utx->transaction_type = $formData->input('transaction_type');
         $utx->save();
-        
+
         $tx_cat = TransCategory::findorFail($id);
         $tx_cat->cat_transaction_id =  $utx->transaction_id;
         $tx_cat->trans_category_id = $formData->input('category_id');
         $tx_cat->save();
-        
-        
+
+
         return redirect()->route('transactions');
     }
 
-    public function createPDF() {
-        // retreive all records from db
-        // $txData = array();
-       
-        // $data = DB::table('users')
-        //     ->join('accounts as acc', 'acc.account_user_id', '=', 'users.id')
-        //     ->join('transactions as txs', 'txs.transaction_account_id', '=', 'acc.account_id')
-        //     ->join('trans_category as tc', 'tc.cat_transaction_id', '=', 'txs.transaction_id')
-        //     ->join('category as cat', 'cat.category_id', '=', 'tc.trans_category_id')
-        //     ->select(
-        //         'txs.transaction_id',
-        //         'acc.bank',
-        //         'acc.account_type',
-        //         'txs.transaction_date',
-        //         'txs.transaction_amount',
-        //         'txs.merchant',
-        //         'txs.transaction_type',
-        //         'cat.category_name'
-        //     )
-        //     ->where('users.id', '=', Auth::id())->get();
-      
-        //     $txData["transactions"] = $data;
-
-            $data = Transaction::all();
-        
-
     
-        // share data to view
-        view()->share('transactions', $data);
-        $pdf = PDF::loadView('pdf_view')->setPaper('a3', 'portrait')
-        ->setOption(['dpi' => 150, 'defaultFont' => 'sans-serif'])
-        ->setWarnings(false);
-        // download PDF file with download method
-        return $pdf->stream();
-      }
-
-
+   
 }
