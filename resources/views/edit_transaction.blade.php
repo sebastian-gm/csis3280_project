@@ -20,7 +20,7 @@
 
         <div class="mb-3">
             <label for="transaction_amount" class="form-label">Transaction amount</label>
-            <input type="number" class="form-control" id="transaction_amount" name="transaction_amount" value="{{ $editData['transaction']->transaction_amount }}">
+            <input type="text" class="form-control" id="transaction_amount" name="transaction_amount" value="{{ $editData['transaction']->transaction_amount }}">
         </div>
 
         <div class="mb-3">

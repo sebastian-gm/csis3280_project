@@ -86,7 +86,7 @@ class TransactionController extends Controller
         $tx->save();
 
         $tx_cat = new TransCategory();
-        $tx_cat->cat_transaction_id =  $tx->id;
+        $tx_cat->cat_transaction_id =  $tx->transaction_id;
         $tx_cat->trans_category_id = $formData->input('category_id');
         $tx_cat->save();
 
