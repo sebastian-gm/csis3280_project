@@ -8,9 +8,10 @@
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
   <h2>@yield('table_title')</h2>
   <div class="table-responsive">
-    <table class="table table-striped table-sm">
+    <table class="table table-striped table-sm" name="table_transactions">
       <thead>
         <tr>
+          <th scope="col">Account ID</th>
           <th scope="col">Bank</th>
           <th scope="col">Account Type</th>
           <th scope="col">Date</th>
@@ -18,6 +19,8 @@
           <th scope="col">Merchant</th>
           <th scope="col">Transaction Type</th>
           <th scope="col">Category </th>
+          <th scope="col">Edit Transaction</th>
+          <th scope="col">Delete Transaction</th>
         </tr>
       </thead>
       <tbody>
@@ -26,6 +29,7 @@
         @else
         @foreach($txData["transaction"] as $tx)
         <tr>
+          <td> {{ $tx->account_id }} </td>
           <td> {{ $tx->bank }} </td>
           <td> {{ $tx->account_type }} </td>
           <td> {{ $tx->transaction_date }} </td>
@@ -46,7 +50,7 @@
     </table>
   </div>
 
-  <a class="btn btn-primary" href="{{ URL::to('/transactions/pdf') }}">Export to PDF</a>
+
   </div>
 </main>
 </div>
