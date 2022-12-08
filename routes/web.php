@@ -18,11 +18,16 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/home', function () {
-    return view('home');
+Route::get('/about', function () {
+    return view('about');
 });
 
-Route::get('/dashboard','App\Http\Controllers\DashboardController@list')->name('dashboard');
+// Route::get('/home', function () {
+//     return view('home');
+// });
+
+// Route::get('/about','App\Http\Controllers\HomeController@about')->name('about');
+
 
 Route::get('/txdetails', 'App\Http\Controllers\TransactionController@list')->name('txdetails');
 

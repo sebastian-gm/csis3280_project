@@ -1,3 +1,36 @@
+# Brainy Wallet Project
+
+## Steps to make the project work
+
+1. Go into project directory (e.g. C:\temp>"name_project") 
+
+2. Installing composer.  
+    - Insert the following commands:  
+     `composer install` 
+         
+    - If the above command doesn't work, try the following:  
+    `composer update`
+3. Installing npm modules.
+    - Insert the following commands:  
+        `npm install`
+    - Then:  
+        `npm run dev`
+
+4. Running the migrations with the SQL server running:
+    - Insert the following commands:  
+        `php artisan migrate`
+
+
+
+5. Run the project:
+    - Insert the following commands:  
+        `php artisan serve`
+      
+    
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
