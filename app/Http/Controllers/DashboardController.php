@@ -20,6 +20,14 @@ class DashboardController extends Controller
 
     }
 
+    public function about_page()
+    {
+        
+
+        return view('about');
+
+    }
+
     public function list(Request $request)
     {
         $viewData = array();

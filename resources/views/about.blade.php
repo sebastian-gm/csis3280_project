@@ -1,5 +1,5 @@
 @section('title', "Brainy Wallet")
-@guest
+
 <!doctype html>
 <html lang="en" class="h-100">
 
@@ -181,7 +181,5 @@
 
 </html>
 
-@else
-@include('home')
-@endguest
+
 

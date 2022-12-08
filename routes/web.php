@@ -31,6 +31,8 @@ Route::get('/about', function () {
 
 Route::get('/txdetails', 'App\Http\Controllers\TransactionController@list')->name('txdetails');
 
+Route::get('/about','App\Http\Controllers\DashboardController@about_page')->name('about');
+
 
 Route::get('/dashboard','App\Http\Controllers\DashboardController@list')->name('dashboard');
 

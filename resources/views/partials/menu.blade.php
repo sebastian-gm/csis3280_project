@@ -11,13 +11,13 @@
             @guest
             <a class="nav-link px-3" href="{{ route('register') }}">Create an account</a>
             <a class="nav-link px-3" href="{{ route('login') }}">Sign In</a>
-            <a class="nav-link px-3" href="#">About</a>
+            <a class="nav-link px-3" href="{{ route('about') }}">About</a>
             @else
             <div>
                 <a class="nav-link px-3" href="{{ route('logout') }}">Logout</a>
             </div>
             <div>
-                <a class="nav-link px-3" href="#">About</a>
+                
                 @endguest
             </div>
         </div>
